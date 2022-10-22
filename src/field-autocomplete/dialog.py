@@ -1,12 +1,17 @@
 from anki import version as anki_version
 from aqt import mw
 from aqt.utils import openLink
-from PyQt5.QtCore import *
-from PyQt5.QtGui import *
-from PyQt5.QtWidgets import *
-
 from .gui.forms import settings_dialog
 from .user_config import getDefaultConfig, getUserOption, writeConfig
+
+from aqt.qt import qtmajor
+if qtmajor == 5:
+    from PyQt5.QtCore import *
+    from PyQt5.QtGui import *
+    from PyQt5.QtWidgets import *
+else:
+    from aqt.qt.qt6 import *
+
 
 conf = getUserOption()
 
